@@ -1,6 +1,7 @@
 services:
   openfishing:
   #image: ghcr.io/patrick131184/openfishing:sha-2225a70
+    build: .
     image: openfishing
     container_name: openfishing
     restart: unless-stopped
