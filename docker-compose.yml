@@ -1,33 +1,25 @@
 services:
   openfishing:
-    image: ghcr.io/m1ndgames/openfishing:latest
+  #image: ghcr.io/patrick131184/openfishing:sha-2225a70
+    image: openfishing
+    container_name: openfishing
+    restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
-      - ./data:/app/data
-      - ./uploads:/app/uploads
+      - openfishing-db:/app/data
+      - openfishing-uploads:/app/uploads
     environment:
+      # Persistente SQLite-Datenbankdatei (im /app/data-Volume)
       - DATABASE_URL=/app/data/openfishing.db
+      # Uploads-Verzeichnis (im /app/uploads-Volume)
       - UPLOAD_PATH=/app/uploads
-      - BASE_URL=https://fishing.yourdomain.com
-      - ADMIN_PASSWORD=your_secure_password  # omit to disable auth (admin login password; AUTH_PASSWORD still works as a deprecated fallback)
-    #  - SMTP_HOST=smtp.example.com           # SMTP for "forgot password" emails (needs SMTP_HOST + SMTP_FROM)
-    #  - SMTP_PORT=587
-    #  - SMTP_USER=apikey
-    #  - SMTP_PASS=secret
-    #  - SMTP_FROM=OpenFishing <noreply@example.com>
-    #  - DEMO_MODE=                           # set to to true, to enable read-only demo mode
-    #  - CHATBOT=                             # set to to true, to enable the AI chatbot
-    #  - LITELLM_URL=http://litellm:4000
-    #  - LITELLM_MODEL=claude-sonnet
-    #depends_on:
-    #  - litellm
+      # Öffentliche URL — für QR-Code- und Passwort-Reset-Links verwendet
+      - BASE_URL=http://fish.server.internal:3000
+      - ORIGIN=http://fish.server.internal:3000
+      # Setzen, um Login zu aktivieren; weglassen für eine vollständig offene Single-Tenant-Instanz
+      #- ADMIN_PASSWORD=change_me
 
-#  litellm: # Optional
-#    image: ghcr.io/berriai/litellm:main-latest
-#    volumes:
-#      - ./litellm.config.yaml:/app/config.yaml
-#    command: ["--config", "/app/config.yaml", "--port", "4000", "--num_workers", "1"]
-#    environment:
-#      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-#      - OPENAI_API_KEY=${OPENAI_API_KEY}
+volumes:
+  openfishing-db:
+  openfishing-uploads:
