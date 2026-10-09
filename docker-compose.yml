@@ -17,7 +17,7 @@ services:
       - UPLOAD_PATH=/app/uploads
       # Öffentliche URL — für QR-Code- und Passwort-Reset-Links verwendet
       - BASE_URL=http://fish.server.internal:3000
-      - ORIGIN=http://fish.server.internal:3000
+      #- ORIGIN=http://fish.server.internal:3000
       # Setzen, um Login zu aktivieren; weglassen für eine vollständig offene Single-Tenant-Instanz
       - ADMIN_PASSWORD=p-2001
 
