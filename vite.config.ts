@@ -11,17 +11,14 @@ export default defineConfig({
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
 				runes: ({ filename }) => filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			// Behind a reverse proxy the request origin comes from the Host header (https by
-			// default) or the PROTOCOL_HEADER / HOST_HEADER env vars. adapter-node has no
-			// `trustProxy` option — the one configured previously was silently ignored.
+			// Hier werden die CSRF- und Origin-Einstellungen für SvelteKit v3 übergeben:
+			csrf: {
+				trustedOrigins: ['http://fish.server.internal']
+			},
+			paths: {
+				origin: 'http://fish.server.internal'
+			},
 			adapter: adapter()
 		})
-	],
-	// FÜGE DIESEN BLOCK HIER HINZU:
-	kit: {
-		csrf: {
-			// Erlaubt in SvelteKit v3 jegliche Cross-Site POST Formulare (äquivalent zu false)
-			trustedOrigins: ['*']
-		}
-	}
+	]
 });
