@@ -6,7 +6,7 @@ services:
     container_name: openfishing
     restart: unless-stopped
     ports:
-      - "80:3000"
+      - "3000:3000"
     volumes:
       - openfishing-db:/app/data
       - openfishing-uploads:/app/uploads
