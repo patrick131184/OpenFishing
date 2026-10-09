@@ -20,7 +20,8 @@ export default defineConfig({
 	// FÜGE DIESEN BLOCK HIER HINZU:
 	kit: {
 		csrf: {
-			checkOrigin: false
+			// Erlaubt in SvelteKit v3 jegliche Cross-Site POST Formulare (äquivalent zu false)
+			trustedOrigins: ['*']
 		}
 	}
 });
