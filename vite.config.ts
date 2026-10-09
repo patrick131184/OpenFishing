@@ -16,5 +16,11 @@ export default defineConfig({
 			// `trustProxy` option — the one configured previously was silently ignored.
 			adapter: adapter()
 		})
-	]
+	],
+	// FÜGE DIESEN BLOCK HIER HINZU:
+	kit: {
+		csrf: {
+			trustedOrigins: ['http://server.internal']
+		}
+	}
 });
