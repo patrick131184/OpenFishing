@@ -8,6 +8,9 @@ const config = {
 	},
 	kit: {
 		adapter: adapter({ trustProxy: true }),
+				// Füge diesen CSRF-Block hinzu:
+		csrf: {
+			trustedOrigins: ['http://server.internal'],
 		typescript: {
 			config: (config) => ({
 				...config,
