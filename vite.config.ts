@@ -20,7 +20,7 @@ export default defineConfig({
 	// FÜGE DIESEN BLOCK HIER HINZU:
 	kit: {
 		csrf: {
-			trustedOrigins: ['http://server.internal']
+			checkOrigin: false
 		}
 	}
 });
