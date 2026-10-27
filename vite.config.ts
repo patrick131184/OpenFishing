@@ -13,10 +13,10 @@ export default defineConfig({
 			},
 			// Hier werden die CSRF- und Origin-Einstellungen für SvelteKit v3 übergeben:
 			csrf: {
-				trustedOrigins: ['http://fish.server.internal']
+				trustedOrigins: ['https://fish.server.internal']
 			},
 			paths: {
-				origin: 'http://fish.server.internal'
+				origin: 'https://fish.server.internal'
 			},
 			adapter: adapter()
 		})
