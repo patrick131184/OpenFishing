@@ -34,7 +34,7 @@
 		});
 
 		mapInstance = L.map(mapEl, { zoomControl: true, scrollWheelZoom: true });
-		L.tileLayer('https://google.com{x}&y={y}&z={z}', {
+		L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
 			attribution: '© <a href="https://google.com">Google Maps</a>',
 			maxZoom: 20
 		}).addTo(mapInstance);
