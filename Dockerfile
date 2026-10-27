@@ -11,7 +11,6 @@ RUN DATABASE_URL=/tmp/build.db npm run build
 RUN npm prune --omit=dev
 
 # ---
-
 FROM node:25-alpine AS runner
 WORKDIR /app
 
