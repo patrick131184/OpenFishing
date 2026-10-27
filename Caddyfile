@@ -1,0 +1,4 @@
+fish.server.internal {
+    tls internal
+    reverse_proxy openfishing:3000
+}

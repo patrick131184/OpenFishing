@@ -4,8 +4,10 @@ services:
     image: openfishing
     container_name: openfishing
     restart: unless-stopped
-    ports:
-      - "80:3000"
+    # Der Port 3000 muss nicht mehr nach außen freigegeben werden, 
+    # da Caddy intern im Docker-Netzwerk darauf zugreift.
+    expose:
+      - "3000"
     volumes:
       - openfishing-db:/app/data
       - openfishing-uploads:/app/uploads
@@ -14,9 +16,26 @@ services:
       - DATABASE_URL=/app/data/openfishing.db
       # Uploads-Verzeichnis (im /app/uploads-Volume)
       - UPLOAD_PATH=/app/uploads
-      # Öffentliche URL — für QR-Code- und Passwort-Reset-Links verwendet
-      - BASE_URL=http://fish.server.internal
-      - ORIGIN=http://fish.server.internal
+      # Öffentliche URL — angepasst auf HTTPS für die Standortermittlung
+      - BASE_URL=https://server.internal
+      - ORIGIN=https://server.internal
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"   # Leitet HTTP-Anfragen automatisch auf HTTPS um
+      - "443:443" # Der verschlüsselte HTTPS-Port
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - openfishing
+
 volumes:
   openfishing-db:
   openfishing-uploads:
+  caddy_data:
+  caddy_config:
