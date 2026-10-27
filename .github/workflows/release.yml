@@ -62,7 +62,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ghcr.io/m1ndgames/openfishing
+          images: ghcr.io/patrick131184/openfishing
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -82,7 +82,7 @@ jobs:
       - name: Scan image for vulnerabilities
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: ghcr.io/m1ndgames/openfishing:latest
+          image-ref: ghcr.io/patrick131184/openfishing:latest
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
