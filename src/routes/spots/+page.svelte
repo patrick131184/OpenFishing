@@ -34,9 +34,9 @@
 		});
 
 		mapInstance = L.map(mapEl, { zoomControl: true, scrollWheelZoom: true });
-		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-			maxZoom: 19
+		L.tileLayer('https://google.com{x}&y={y}&z={z}', {
+			attribution: '© <a href="https://google.com">Google Maps</a>',
+			maxZoom: 20
 		}).addTo(mapInstance);
 
 		// Build spot layer group
