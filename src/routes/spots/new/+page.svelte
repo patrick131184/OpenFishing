@@ -161,7 +161,7 @@
 	onDestroy(() => { mapInstance?.remove(); });
 </script>
 
-<div style="max-width:600px; margin:0 auto;">
+<div style="margin:0 auto;">
 	{#if form?.error}
 		<div style="margin-bottom:16px; background:var(--of-danger-bg); border:1px solid var(--of-danger-border); color:var(--of-danger); font-size:0.875rem; padding:12px 16px; border-radius:10px;">
 			{t[form.error as keyof typeof t] ?? form.error}
