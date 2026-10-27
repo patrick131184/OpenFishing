@@ -57,11 +57,11 @@
 			popupAnchor: [0, -40]
 		});
 
-		mapInstance = L.map(mapEl, { zoomControl: true });
-
-		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-			maxZoom: 19
+		mapInstance = L.map(mapEl, { zoomControl: true, scrollWheelZoom: true });
+		L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+			attribution: '© <a href="https://google.com">Google Maps</a>',
+			maxZoom: 20,
+			subdomains:['mt0','mt1','mt2','mt3']
 		}).addTo(mapInstance);
 
 		// Default view up front: without it the map stays grey (no tiles) whenever geolocation
