@@ -18,8 +18,6 @@ services:
       # Öffentliche URL — für QR-Code- und Passwort-Reset-Links verwendet
       - BASE_URL=http://fish.server.internal
       - ORIGIN=http://fish.server.internal
-    
-
 volumes:
   openfishing-db:
   openfishing-uploads:
