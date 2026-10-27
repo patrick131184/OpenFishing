@@ -18,7 +18,7 @@ services:
       # Öffentliche URL — für QR-Code- und Passwort-Reset-Links verwendet
       - BASE_URL=http://fish.server.internal
       - ORIGIN=http://fish.server.internal
-      # Setzen, um Login zu aktivieren; weglassen für eine vollständig offene Single-Tenant-Instanz
+    
 
 volumes:
   openfishing-db:
